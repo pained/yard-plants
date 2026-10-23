@@ -20,7 +20,7 @@ window.YARD_CONFIG = {
       key: "front",
       label: "Front yard",
       tab: "Frontyard",
-      gid: null, // fill in from the sheet URL
+      gid: 1195815776,
       snapshot: "data/frontyard.csv",
       map: "", // add images/frontyard-map.jpg when there is one
     },
