@@ -12,7 +12,7 @@ window.YARD_CONFIG = {
       key: "back",
       label: "Backyard + South",
       tab: "Backyard + South",
-      gid: null, // fill in from the sheet URL
+      gid: 0,
       snapshot: "data/backyard.csv",
       map: "", // the aerial photo stays private, so no map image here
     },
