@@ -6,7 +6,7 @@ planted, details) and shows:
 
 - an overview of every plant, grouped by yard, with search and filters
 - a page per plant with its details split into a list
-- the numbered yard map with a clickable legend
+- a map page listing each yard's numbered plants (the aerial photo is kept private)
 
 ## Editing plants
 

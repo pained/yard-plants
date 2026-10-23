@@ -5,19 +5,22 @@ window.YARD_CONFIG = {
   // to the CSV snapshots in data/.
   sheetId: "1jKFUS5u0UUiVP_8_vDzcAWvBMYi86t_qKfSfmnYUPSs",
 
-  // One entry per sheet tab. `tab` must match the tab name exactly.
+  // One entry per sheet tab. `tab` must match the tab name exactly. `gid` is
+  // the number after "#gid=" in the sheet's URL when that tab is open.
   yards: [
     {
       key: "back",
       label: "Backyard + South",
       tab: "Backyard + South",
+      gid: null, // fill in from the sheet URL
       snapshot: "data/backyard.csv",
-      map: "", // images/backyard-map.jpg once Drew OKs publishing the aerial photo
+      map: "", // the aerial photo stays private, so no map image here
     },
     {
       key: "front",
       label: "Front yard",
       tab: "Frontyard",
+      gid: null, // fill in from the sheet URL
       snapshot: "data/frontyard.csv",
       map: "", // add images/frontyard-map.jpg when there is one
     },

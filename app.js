@@ -27,9 +27,15 @@
     return rows;
   }
 
-  function liveUrl(tab) {
-    return "https://docs.google.com/spreadsheets/d/" + cfg.sheetId +
-      "/gviz/tq?tqx=out:csv&headers=1&sheet=" + encodeURIComponent(tab);
+  // The export URL returns cells exactly as typed. The gviz URL is the backup:
+  // it blanks out cells whose type differs from most of their column (such as
+  // "Pre-house purchase" in a column of years), so it is tried second.
+  function liveUrls(yard) {
+    const base = "https://docs.google.com/spreadsheets/d/" + cfg.sheetId;
+    const urls = [];
+    if (yard.gid != null) urls.push(base + "/export?format=csv&gid=" + yard.gid);
+    urls.push(base + "/gviz/tq?tqx=out:csv&headers=1&sheet=" + encodeURIComponent(yard.tab));
+    return urls;
   }
 
   async function fetchText(url) {
@@ -65,12 +71,14 @@
   }
 
   async function loadYard(yard) {
-    try {
-      return { rows: parseCSV(await fetchText(liveUrl(yard.tab))), live: true };
-    } catch (err) {
-      console.warn("Live sheet unavailable, using snapshot:", err.message);
-      return { rows: parseCSV(await fetchText(yard.snapshot)), live: false };
+    for (const url of liveUrls(yard)) {
+      try {
+        return { rows: parseCSV(await fetchText(url)), live: true };
+      } catch (err) {
+        console.warn("Live sheet unavailable:", err.message);
+      }
     }
+    return { rows: parseCSV(await fetchText(yard.snapshot)), live: false };
   }
 
   async function load() {
