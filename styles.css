@@ -1,24 +1,33 @@
 :root {
-  --bg: #f6f7f3;
+  /* Minnesota flag: Night Sky Blue #002D5D, Lake Blue #52C9E8 */
+  --navy: #002d5d;
+  --lake: #52c9e8;
+  --bg: #f3f7fa;
   --surface: #ffffff;
-  --text: #1f2a1f;
-  --muted: #5f6b5f;
-  --border: #dde3d9;
-  --accent: #2f6b3a;
-  --front: #2f6b3a;
-  --back: #8a5a1f;
+  --text: #0f1f33;
+  --muted: #55667a;
+  --border: #d6e2ec;
+  --accent: #0b5c94;
+  --on-accent: #ffffff;
+  --front: #002d5d;
+  --back: #1478b8;
+  --header-bg: var(--navy);
+  --header-text: #ffffff;
+  --header-active: var(--lake);
   --radius: 10px;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #141814;
-    --surface: #1d231d;
-    --text: #e6ece4;
-    --muted: #9aa69a;
-    --border: #2e372e;
-    --accent: #7cc48a;
-    --front: #7cc48a;
-    --back: #e0a860;
+    --bg: #07121f;
+    --surface: #0f2033;
+    --text: #e4eef6;
+    --muted: #93a6b8;
+    --border: #1f3550;
+    --accent: #52c9e8;
+    --on-accent: #002d5d;
+    --front: #52c9e8;
+    --back: #9bdcf0;
+    --header-bg: #001a38;
   }
 }
 
@@ -35,14 +44,14 @@ a { color: var(--accent); }
   position: sticky; top: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: var(--header-bg);
+  border-bottom: 4px solid var(--lake);
 }
-.brand { font-weight: 700; text-decoration: none; color: var(--text); }
+.brand { font-weight: 700; text-decoration: none; color: var(--header-text); }
 .topbar nav a {
-  margin-left: 16px; text-decoration: none; color: var(--muted); font-weight: 500;
+  margin-left: 16px; text-decoration: none; color: var(--header-text); opacity: .8; font-weight: 500;
 }
-.topbar nav a.active { color: var(--accent); }
+.topbar nav a.active { color: var(--header-active); opacity: 1; }
 
 main { max-width: 1000px; margin: 0 auto; padding: 16px; }
 .muted { color: var(--muted); }
@@ -67,10 +76,10 @@ main { max-width: 1000px; margin: 0 auto; padding: 16px; }
   padding: 8px 14px; border-radius: 999px; font: inherit; cursor: pointer;
   border: 1px solid var(--border); background: var(--surface); color: var(--text);
 }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .button {
   display: inline-block; padding: 8px 14px; border-radius: var(--radius);
-  background: var(--accent); color: var(--surface); text-decoration: none; font-weight: 500;
+  background: var(--accent); color: var(--on-accent); text-decoration: none; font-weight: 500;
 }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
@@ -83,7 +92,7 @@ main { max-width: 1000px; margin: 0 auto; padding: 16px; }
 .num {
   flex: none; display: grid; place-items: center;
   width: 36px; height: 36px; border-radius: 50%;
-  background: var(--front); color: var(--surface); font-weight: 700; font-size: .9rem;
+  background: var(--front); color: var(--on-accent); font-weight: 700; font-size: .9rem;
 }
 .num.back { background: var(--back); }
 .card h3 { margin: 0 0 2px; font-size: 1rem; }
